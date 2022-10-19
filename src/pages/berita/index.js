@@ -1,3 +1,5 @@
+import { dummyData } from "./dummyData";
+
 const Berita = () => {
     return (
         <div className="vw-100 vh-100">
@@ -9,31 +11,28 @@ const Berita = () => {
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">No</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Diunggah Pada</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        {
+                            dummyData.map((el, idx) => (
+                                <tr key={idx}>
+                                    <th scope="row">{idx + 1}</th>
+                                    <td>{el.judul}</td>
+                                    <td>{el.content}</td>
+                                    <td>{el.created_at}</td>
+                                    <td className="d-flex gap-2">
+                                        <button className="btn btn-info">edit</button>
+                                        <button className="btn btn-danger">delete</button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>
